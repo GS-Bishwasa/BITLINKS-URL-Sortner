@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <section className="grid grid-cols-2 h-[50vh]">
+      <section className="grid grid-cols-2 h-[60vh]">
         {/* Text Section */}
         <div className="flex flex-col justify-center items-center bg-purple-100  text-center">
           <h1 className="text-4xl font-bold text-black">
@@ -25,13 +25,15 @@ export default function Home() {
 
         {/* Image Section */}
         <div className="flex justify-center items-center bg-purple-100  relative">
-          <Image
-            src="/work.jpg"
-            fill={true}
-            alt="An Office Vector"
-            className="rounded-lg mix-blend-darken"
-            priority // Ensures the image loads early for better performance
-          />
+        <Image
+  src="/work.jpg"
+  fill={true}
+  alt="An Office Vector"
+  className="rounded-lg mix-blend-darken"
+  priority // Ensures the image loads early for better performance
+  sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 33vw" // Define image sizes based on viewport width
+/>
+
         </div>
       </section>
     </>
