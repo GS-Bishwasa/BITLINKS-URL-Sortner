@@ -1,9 +1,97 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react';
+import Link from 'next/link';
 
-const Navbat = () => {
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <div>Navbat</div>
-  )
-}
+    <nav className="bg-white border-gray-200 dark:bg-purple-700">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+            BITLINKS
+          </span>
+        </a>
+        <button
+          onClick={toggleMenu}
+          type="button"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-default"
+          aria-expanded={isMenuOpen}
+        >
+          <span className="sr-only">Open main menu</span>
+          <svg
+            className="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M1 1h15M1 7h15M1 13h15"
+            />
+          </svg>
+        </button>
+        <div
+          className={`${
+            isMenuOpen ? 'block' : 'hidden'
+          } w-full md:block md:w-auto`}
+          id="navbar-default"
+        >
+          <ul className="font-medium flex items-center flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-gray-800 md:dark:bg-purple-700 dark:border-gray-700">
+            <li>
+              <a
+                href="/"
+                className="block py-2 px-3 text-white bg-blue-400 rounded md:bg-transparent md:text-blue-400 md:p-0 dark:text-white md:dark:text-blue-400"
+                aria-current="page"
+              >
+                Home
+              </a>
+            </li>
+            <li>
+              <a
+                href="/about"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0 dark:text-white md:dark:hover:text-blue-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                About
+              </a>
+            </li>
+            <li>
+              <a
+                href="/sorten"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0 dark:text-white md:dark:hover:text-blue-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                Sortner
+              </a>
+            </li>
+            <li>
+              <a
+                href="/contact"
+                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-400 md:p-0 dark:text-white md:dark:hover:text-blue-400 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              >
+                Contact Us
+              </a>
+            </li>
+            <li>
+            <Link href={"/sorten"}><button type="button" className="my-2 mx-3 md:m-0 shadow-lg focus:outline-none text-white bg-purple-700 hover:bg-blue-400 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-blue-400 dark:focus:ring-purple-900">Try Now</button></Link>
+            </li>
+            <li>
+            <Link href={"https://github.com/GS-Bishwasa?tab=repositories"}><button type="button" className="my-2 mx-3 md:m-0 shadow-lg focus:outline-none text-white bg-purple-700 hover:bg-blue-400 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-purple-600 dark:hover:bg-blue-400 dark:focus:ring-purple-900">github</button></Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  );
+};
 
-export default Navbat
+export default Navbar;
